@@ -1,6 +1,6 @@
 # nba_clustering
 
-In this project, I use a PCA and clutering analysis to take a look at player and team statistics from the nba between 1980 and 2019.  
+In this project, I use PCA and clutering analysis to take a look at player and team statistics from the nba between 1980 and 2019.  
 
 # Organization
 /python/ contains lower level code that is implemented in jupyter notebooks contained in /scripts/.
