@@ -15,7 +15,7 @@ font = {'family' : 'DejaVu Sans',
 		'size'   : 18}
 mpl.rc('font', **font)
 ################################################################################
-colorList = ['r','g','b','k','c','y','m','tab:gray']
+colorList = ['r','g','b','k','c','y','m','tab:gray', 'tab:orange', 'tab:pink']
 ################################################################################
 def scatter_2d(kmeans, npDataTrans, colorList=colorList):
 	'''
@@ -28,8 +28,8 @@ def scatter_2d(kmeans, npDataTrans, colorList=colorList):
 		try:
 			plt.scatter(kmeans.cluster_centers_[n,0],
 						kmeans.cluster_centers_[n,1],
-						marker="s", s=100, color=colorList[n])
-		except: a=1
+						marker="s", s=200, color=colorList[n])
+		except: pass
 	for i in range(npDataTrans.shape[0]):
 		label = kmeans.labels_[i]
 		plt.scatter(npDataTrans[i,0],
@@ -92,7 +92,7 @@ def add_labels_to_plot(plt, labelList, idList, locs, fontsize=12):
 	for label in labelList:
 		for n in range(len(idList)):
 			if label==idList[n]:
-				plt.annotate(label, locs[n,:2], fontsize=12)
+				plt.annotate(label, locs[n,:2], fontsize=12, rotation=45)
 ################################################################################
 def classification_plot_teams(kmeans, npDataTrans, idList):
 	'''
