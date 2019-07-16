@@ -20,6 +20,10 @@ def scrape_all_teams(teamList, verbose=False):
     return dfDict
 ################################################################################
 def scrape_player_names(season=2019):
+    '''
+    Srapes bball ref and returns a list of player names (with no special formatting)
+    for all players active in the given season.
+    '''
     url = BASE_URL + "/leagues/NBA_" + str(season) + "_per_game.html"
     r = requests.get(url)
     if r.status_code == 404:
@@ -59,6 +63,10 @@ def scrape_player_names(season=2019):
         return playerNameList
 ################################################################################
 def get_player_stats_basic(player):
+    '''
+    Takes a player lookup string and scrapes thier basic stats table from
+    bball ref.  Returns a pandas data frame with each row being a season's stats.
+    '''
     url = BASE_URL + "/players/" + player[:1] + "/" + player + ".html"
     r = requests.get(url)
     if r.status_code == 404:
@@ -106,6 +114,10 @@ def get_player_stats_basic(player):
         return df
 ################################################################################
 def get_team_stats_basic(team):
+    '''
+    Takes a team abbreviation and scrapes that team's stats table for
+    year end stats for each season.  Returns a pandas data frame.
+    '''
     url = BASE_URL + "/teams/" + team + "/stats_per_game_totals" + ".html"
     r = requests.get(url)
     if r.status_code == 404:

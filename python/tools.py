@@ -26,12 +26,18 @@ champIds = [
 thisSeasonIds = [teamList[n]+"_"+"2019" for n in range(len(teamList))]
 ################################################################################
 def convert_height_str(s):
+	'''
+	Converts height from a string (ie. 6'8'') to a float in inches.
+	'''
 	feet   = float(s[0])
 	inches = float(s[2:])
 	tot    = feet + inches/12.0
 	return tot
 ################################################################################
 def getSeasonIndex(endYear):
+	'''
+	Takes the end year of a season and returns startYear-endYear
+	'''
 	startYear    = endYear-1
 	endYearStr   = (str(endYear))[2:]
 	startYearStr = str(startYear)
@@ -39,6 +45,10 @@ def getSeasonIndex(endYear):
 	return indexStr
 ################################################################################
 def get_player_lookup_string(playerName):
+	'''
+	Takes a player name with no special formatting and returns their
+	player lookup string for bball ref.  ie. "Lebron James" --> "jamesle01".
+	'''
 	# find space to seperate first and last name
 	spaceIndex = 0
 	for char in playerName:

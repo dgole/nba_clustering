@@ -11,13 +11,18 @@ sys.path.append('../python/')
 import tools
 plt.rcParams['figure.figsize'] = [16, 11]
 font = {'family' : 'DejaVu Sans',
-        'weight' : 'normal',
-        'size'   : 18}
+		'weight' : 'normal',
+		'size'   : 18}
 mpl.rc('font', **font)
 ################################################################################
 colorList = ['r','g','b','k','c','y','m','tab:gray']
 ################################################################################
 def scatter_2d(kmeans, npDataTrans, colorList=colorList):
+	'''
+	Makes a scatter plot in a 2D space determined by the first
+	two PCs.  Colors the points according to the cluster they
+	belong to.
+	'''
 	nClusters = np.amax(kmeans.labels_)+1
 	for n in range(nClusters):
 		try:
@@ -38,6 +43,11 @@ def scatter_2d(kmeans, npDataTrans, colorList=colorList):
 	return plt
 ################################################################################
 def scatter_3d(kmeans, npDataTrans, colorList=colorList):
+	'''
+	Makes a scatter plot in a #D space determined by the first
+	three PCs.  Colors the points according to the cluster they
+    belong to.
+	'''
 	nClusters = np.amax(kmeans.labels_)+1
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection='3d')
@@ -60,6 +70,10 @@ def scatter_3d(kmeans, npDataTrans, colorList=colorList):
 	return plt
 ################################################################################
 def vis_pca(pca, featureList):
+	'''
+	Visualizes the transform from the original feature space to the PCA
+	determined feature space by making several bar graphs.
+	'''
 	fig, axs = plt.subplots(4, 1, figsize=(9, 12), sharex=True)
 	for n in range(len(axs)):
 		ax = axs[n]
@@ -72,12 +86,18 @@ def vis_pca(pca, featureList):
 	return plt
 ################################################################################
 def add_labels_to_plot(plt, labelList, idList, locs, fontsize=12):
+	'''
+	Adds player/team labels to an already existing scatter plot.
+	'''
 	for label in labelList:
 		for n in range(len(idList)):
 			if label==idList[n]:
 				plt.annotate(label, locs[n,:2], fontsize=12)
 ################################################################################
 def classification_plot_teams(kmeans, npDataTrans, idList):
+	'''
+	Visualizes the classification of each time for each season.
+	'''
 	for i in range(npDataTrans.shape[0]):
 		team = idList[i][:3]
 		for n in range(len(tools.teamList)):
