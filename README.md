@@ -31,7 +31,7 @@ In this project, I use a PCA and clutering analysis to take a look at player and
 ### Team classification over time:  
 Each color corresponds to a different classification of team stats.  Notably, playstyles have varied more over time than within a single season.  All teams today belong to the same classification, with the first teams to play with that style being the 1995 Houston Rockets, the 1996 Orlando Magic, and the 2005-2010 Phoenix Suns.  
 
-<img src="./figures/team_year.png" width="1000" height="1600" />
+<img src="./figures/team_year.png" width="800" height="500" />
 
 
 
